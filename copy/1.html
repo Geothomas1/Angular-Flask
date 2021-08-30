@@ -1,9 +1,9 @@
-<div style="padding-left: 500px;padding-top:100px;">
+<div style="padding-left: 300px;padding-top:100px;">
     <h2>Employee Details</h2>
     <br>
         <br>
             <br>
-                <table>
+                <table border="0">
                     <tr>
                         <th>Employee ID</th>
                         <td>{{empData?.employee_id}}</td>
@@ -33,36 +33,108 @@
                 </table>
                 <br>
                     <br>
+                    <h1>Assessment History</h1>
+                    <table *ngFor='let attemps of assessmentAttempt'>
+                     
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                         <th rowspan="15">{{attemps?.assessment.title}}</th> 
+                        </tr>
+                        <tr>
+                            <th>ASSESSMENT TYPE</th>
+                            <td>{{attemps?.assessment.assessment_type}}</td>
+                            </tr>
                       
-                                    <h1>Assessment History</h1>
-                                    <table border="1">
-                                        <tr *ngFor="let assessment of assessments">
-                                            <div>{{ assessment.title }}
-                                                <tr *ngFor='let attemps of assessmentAttempt'>
-                                                    <td>
-                                                        <div *ngIf="attemps.assessment_id === assessment.id; else elseBlock">
-                                                            
-                                                           <h4>Attempted Date{{attemps.attempt_date}}</h4>
-                                                           <h4>Total Score{{attemps.total_score}}</h4> 
-                                                         
-                                                        </div>
-                                                        <ng-template #elseBlock>
-                                                            <p>
-                                                              Assessment not attempted
-                                                            </p>
-                                                          </ng-template>
-                                                    </td>
-                                                </tr>
-                                            </div>
+                        <tr>
+                        <th>START DATE</th>
+                        <td>{{attemps?.assessment.start_date}}</td>
+                        
+                        </tr>
+                        <tr>
+                         <th>END DATE</th>
+                         <td>{{attemps?.assessment.end_date}}</td>
+                     
+                        </tr>
+                        <tr>
+                        <th>ASSESSMENT TOTAL SCORE</th>
+                        <td>{{attemps?.total_score}} out of {{attemps?.assessment.total_score}}</td>
+                
+                        </tr>
+                        <tr>
+                            <th>ATTEMPT DATE</th>
+                            <td>{{attemps?.attempt_date}}</td>
+                 
+                        </tr>
+                        <!-- <tr>
+                            <th>Competencies DETAILS</th>
+                            <div *ngFor="let competencies of competenciesData">   
+                                         <table >
+                                             <tr>
+                                                 <th>Competency Name</th>
+                                                 <td>{{competencies?.competency_name}}</td>
+                                             </tr>
+                                              <tr>
+                                                 <th>Level Name</th>
+                                                 <td>{{competencies?.level_name}}</td>
+                                                 </tr>
+                                            </table> 
 
+                          </div>
+                        </tr>               -->
+                        <tr>
+                       <th>ASSESSMENT ACTIVITY DETAILS</th>
+                       <div *ngFor="let activityAttemp of assessmentActivityAttempt">
+                        <div *ngIf="activityAttemp?.assessment_attempt.assessment_id==attemps?.assessment.id">
+
+
+                            <div *ngFor="let activity of activity">
+                                <div *ngIf="activity?.id==activityAttemp?.assessment_activity_id">
+                                    
+                                    <table >
+                                        <tr>
+                                            <th>Activity title</th>
+                                            <td>{{activity?.activity_title}}</td>
                                         </tr>
-                                        
-                                        <tbody></tbody>
-
-                                    </table>
-                                    <br>
-                                    <br><br>
-                                    <br><br>
-                                    <br><br>
-                                    <br>
+                                         <tr>
+                                            <th>Activity TYPE</th>
+                                            <td>{{activity?.activity_type}}</td>
+                                            </tr>
+                                       </table> 
                                 </div>
+                              </div>
+
+
+
+
+                            <table>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{activityAttemp?.status}}</td>
+                                </tr>
+                                 <tr>
+                                    <th>Time Taken</th>
+                                    <td>{{activityAttemp?.time_consumed}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Re Attempted Status</th>
+                                        <td>{{activityAttemp?.is_reattempt}}</td>
+                                        </tr>
+                               </table>
+                               <br>
+                               <br>
+                        </div>
+                      </div>
+                       
+                        </tr>
+                        <br><br>
+                       </table>
+                     
+          
+                                    <br>
+                                    <br><br>
+                                    <br><br>
+                                    <br><br>
+                                    <br>
+    </div>
