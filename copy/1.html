@@ -1,0 +1,68 @@
+<div style="padding-left: 500px;padding-top:100px;">
+    <h2>Employee Details</h2>
+    <br>
+        <br>
+            <br>
+                <table>
+                    <tr>
+                        <th>Employee ID</th>
+                        <td>{{empData?.employee_id}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{empData?.display_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Designation</th>
+                        <td>{{empData?.designation}}</td>
+                    </tr>
+                    <tr>
+                        <th>DOB</th>
+                        <td>{{empData?.dob}}</td>
+                    </tr>
+                    <tr>
+                        <th>Department</th>
+                        <td>{{empData?.department?.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>About Me</th>
+                        <td>{{empData?.user?.about_me}}</td>
+                    </tr>
+                    
+                </table>
+                <br>
+                    <br>
+                      
+                                    <h1>Assessment History</h1>
+                                    <table border="1">
+                                        <tr *ngFor="let assessment of assessments">
+                                            <div>{{ assessment.title }}
+                                                <tr *ngFor='let attemps of assessmentAttempt'>
+                                                    <td>
+                                                        <div *ngIf="attemps.assessment_id === assessment.id; else elseBlock">
+                                                            
+                                                           <h4>Attempted Date{{attemps.attempt_date}}</h4>
+                                                           <h4>Total Score{{attemps.total_score}}</h4> 
+                                                         
+                                                        </div>
+                                                        <ng-template #elseBlock>
+                                                            <p>
+                                                              Assessment not attempted
+                                                            </p>
+                                                          </ng-template>
+                                                    </td>
+                                                </tr>
+                                            </div>
+
+                                        </tr>
+                                        
+                                        <tbody></tbody>
+
+                                    </table>
+                                    <br>
+                                    <br><br>
+                                    <br><br>
+                                    <br><br>
+                                    <br>
+                                </div>
